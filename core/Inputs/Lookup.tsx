@@ -99,10 +99,10 @@ export default class Lookup<P, S> extends Input<LookupInputProps, LookupInputSta
       {...this.getEndpointParams(), search: inputValue},
       {},
       (data: any) => {
-        this.setState({
+        this.setState((previousState: any) => ({
           isInitialized: true,
-          data: data
-        });
+          data: inputValue ? { ...(previousState.data ?? {}), ...data } : data,
+        }));
 
         if (callback) callback(Object.values(data ?? {}));
       }
