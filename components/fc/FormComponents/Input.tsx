@@ -63,7 +63,9 @@ const Input = (props: any) => {
     : null)))
   ;
 
-  const value = (form.creatingRecord ? defaultValue : useRecordField(field));
+  const recordValue = useRecordField(field);
+  const fieldIsSet = field in (form.recordStore?.getRecord() ?? {});
+  const value = (form.creatingRecord && !fieldIsSet ? defaultValue : recordValue);
   const isModified = value !== form.originalRecord[field];
 
   const inputProps: InputProps = {

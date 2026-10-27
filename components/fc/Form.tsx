@@ -316,7 +316,7 @@ const Form = (props: FormProps) => {
           let record = newDescription.defaultValues ?? {};
 
           Object.keys(newDescription.inputs).map((i) => {
-            if (newDescription.inputs[i].defaultValue) {
+            if (newDescription.inputs[i].defaultValue && !(i in record)) {
               record[i] = newDescription.inputs[i].defaultValue;
             }
           })
