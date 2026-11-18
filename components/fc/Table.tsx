@@ -1612,7 +1612,7 @@ const Table = (props: TableProps) => {
               })}</>;
             } else {
               cellValueElement = <>{Object.keys(columnValueParsed).map((key, index) => {
-                return <div key={index} className='badge block text-xs'>{key}: {columnValueParsed[key].toString()}</div>
+                return <div key={index} className='badge block text-xs'>{key}: {String(columnValueParsed[key])}</div>
               })}</>;
             }
           break;
